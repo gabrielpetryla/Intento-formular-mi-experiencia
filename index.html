@@ -82,7 +82,7 @@
     z-index:1;
     max-width:1300px;
     margin:0 auto;
-    min-height:275vh;
+    min-height:265vh;
     padding: 0 3vw;
   }
 
@@ -231,30 +231,47 @@
   }
 
   /* ---------- posições: mesa desordenada (desktop) ---------- */
+  /* Hierarquia: notas de texto = âncoras principais (maiores, z-index alto).
+     Vídeo/foto "irmãos" de cada nota = tamanho normal, logo ao lado.
+     Vídeos extras (músicas) = menores, ao fundo, intercalados — nunca isolados. */
+
   .note--1{ width:300px; }
   .note--3{ width:280px; }
   .note--5{ width:340px; }
 
   .note--1  { top: 1vh;   left: 2%;   --rot:-7deg; transform: translate(-70px,20px) rotate(-13deg); z-index:8; }
-  .monitor--1{ top: 8vh;   left: 46%;  --rot:5deg;  transform: translate(70px,20px) rotate(11deg); z-index:4; }
-  .scrap--1 { top: 3vh;   left: 68%;  --rot:9deg; }
+  .monitor--1{ top: 8vh;   left: 44%;  --rot:5deg;  transform: translate(70px,20px) rotate(11deg); z-index:4; }
+  .photo--3 { top: 4vh;   left: 80%;  --rot:8deg;  transform: translate(40px,-20px) rotate(16deg); }
+  .scrap--1 { top: 30vh;  left: 68%;  --rot:9deg; }
 
-  .monitor--2{ top: 24vh;  left: 3%;   --rot:-6deg; transform: translate(-70px,25px) rotate(-11deg); z-index:3; }
-  .note--2  { top: 40vh;  left: 40%;  --rot:6deg;  transform: translate(70px,20px) rotate(12deg); z-index:7; }
-  .scrap--2 { top: 30vh;  left: 76%;  --rot:-6deg; }
+  .monitor--6{ top: 36vh;  left: 80%; --rot:9deg;  transform: translate(50px,20px) rotate(15deg); z-index:2; width:190px; }
 
-  .note--3  { top: 62vh;  left: 8%;   --rot:-9deg; transform: translate(0,70px) rotate(-6deg) scale(.88); z-index:9; }
-  .monitor--3{ top: 58vh;  left: 55%;  --rot:7deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
+  .monitor--2{ top: 30vh;  left: 3%;   --rot:-6deg; transform: translate(-70px,25px) rotate(-11deg); z-index:3; }
+  .note--2  { top: 46vh;  left: 38%;  --rot:6deg;  transform: translate(70px,20px) rotate(12deg); z-index:7; }
+  .photo--4 { top: 62vh;  left: 4%;  --rot:-7deg; transform: translate(-40px,20px) rotate(-14deg); }
 
-  .monitor--4{ top: 92vh;  left: 1%;   --rot:-5deg; transform: translate(-70px,20px) rotate(-11deg); z-index:3; }
-  .note--4  { top: 86vh;  left: 44%;  --rot:4deg;  transform: translate(70px,20px) rotate(11deg); z-index:6; }
-  .scrap--3 { top: 100vh; left: 74%;  --rot:5deg; }
+  .monitor--7{ top: 70vh; left: 66%; --rot:-8deg; transform: translate(50px,20px) rotate(-14deg); z-index:2; width:190px; }
 
-  .note--5  { top: 118vh; left: 4%;   --rot:-6deg; transform: translate(-70px,20px) rotate(-12deg); z-index:8; }
-  .monitor--5{ top: 128vh; left: 48%;  --rot:8deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
+  .note--3  { top: 90vh;  left: 8%;   --rot:-9deg; transform: translate(0,70px) rotate(-6deg) scale(.88); z-index:9; }
+  .monitor--3{ top: 86vh;  left: 46%;  --rot:7deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
+  .scrap--2 { top: 96vh;  left: 78%;  --rot:-6deg; }
+
+  .monitor--4{ top: 122vh; left: 1%;   --rot:-5deg; transform: translate(-70px,20px) rotate(-11deg); z-index:3; }
+  .note--4  { top: 116vh; left: 40%;  --rot:4deg;  transform: translate(70px,20px) rotate(11deg); z-index:6; }
+  .photo--1 { top: 112vh; left: 78%; --rot:6deg;  transform: translate(40px,20px) rotate(14deg); }
+
+  .monitor--8{ top: 150vh; left: 66%; --rot:8deg;  transform: translate(50px,20px) rotate(14deg); z-index:2; width:190px; }
+  .scrap--3 { top: 144vh; left: 6%;  --rot:5deg; }
+
+  .note--5  { top: 164vh; left: 8%;   --rot:-6deg; transform: translate(-70px,20px) rotate(-12deg); z-index:8; }
+  .monitor--5{ top: 174vh; left: 46%;  --rot:8deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
+  .photo--2 { top: 168vh; left: 80%; --rot:-5deg; transform: translate(40px,20px) rotate(-12deg); }
+
+  .monitor--9{ top: 200vh; left: 8%;  --rot:-9deg; transform: translate(-50px,20px) rotate(-15deg); z-index:2; width:190px; }
+  .photo--5 { top: 196vh; left: 66%; --rot:5deg;  transform: translate(40px,20px) rotate(12deg); }
 
   .note--final{
-    top:238vh; left:22%; width:380px; --rot:-2deg;
+    top:222vh; left:22%; width:380px; --rot:-2deg;
     transform: translate(0,50px) rotate(6deg) scale(.88);
     z-index:10;
   }
@@ -265,19 +282,7 @@
     text-align:center;
   }
 
-  /* ---------- fotos: posições ---------- */
-  .photo--1{ top: 100vh; left: 80%; --rot:6deg; transform: translate(40px,20px) rotate(14deg); }
-  .photo--2{ top: 128vh; left: 84%; --rot:-5deg; transform: translate(40px,20px) rotate(-12deg); }
-  .photo--3{ top: 12vh;  left: 84%; --rot:8deg;  transform: translate(40px,-20px) rotate(16deg); }
-  .photo--4{ top: 44vh;  left: 4%;  --rot:-7deg; transform: translate(-40px,20px) rotate(-14deg); }
-  .photo--5{ top: 200vh; left: 74%; --rot:5deg;  transform: translate(40px,20px) rotate(12deg); }
-  .photo--6{ top: 254vh; left: 58%; --rot:-4deg; transform: translate(30px,30px) rotate(-10deg); width:200px; }
-
-  /* ---------- novos monitores (musicas) ---------- */
-  .monitor--6{ top: 160vh; left: 6%;  --rot:-6deg; transform: translate(-70px,20px) rotate(-12deg); z-index:3; }
-  .monitor--7{ top: 168vh; left: 40%; --rot:5deg;  transform: translate(70px,20px) rotate(11deg); z-index:4; }
-  .monitor--8{ top: 196vh; left: 6%;  --rot:-5deg; transform: translate(-70px,20px) rotate(-11deg); z-index:3; }
-  .monitor--9{ top: 205vh; left: 42%; --rot:7deg;  transform: translate(70px,20px) rotate(13deg); z-index:4; }
+  .photo--6{ top: 250vh; left: 42%; --rot:-4deg; transform: translate(30px,30px) rotate(-10deg); width:200px; }
 
   /* ---------- Fotos reais, estilo polaroide ---------- */
   .photo{
