@@ -260,6 +260,34 @@
     margin-top:0.4rem;
   }
 
+  /* ---------- Recorte: artículo publicado ---------- */
+  .note--clip{ padding: 1.5rem 1.6rem 1.4rem; }
+  .note--clip__title{
+    font-family:'Fraunces', Georgia, serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:0.95rem;
+    line-height:1.35;
+    margin: 0 0 0.6rem;
+  }
+  .note--clip__meta{
+    font-size:0.8rem;
+    color: var(--pencil);
+    margin: 0 0 0.8rem;
+  }
+  .note--clip__link{
+    display:inline-block;
+    font-family:'Special Elite','Courier New',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color: var(--wine);
+    text-decoration:none;
+    border-bottom:1px solid var(--wine);
+    padding-bottom:2px;
+  }
+  .note--clip__link:hover{ color: var(--wine-bright); border-color: var(--wine-bright); }
+
   /* ---------- Bilhete final ---------- */
   .note--final{
     text-align:center;
@@ -462,6 +490,15 @@
         <div class="photo__frame"><img src="fotos/angico.jpeg" alt="Un árbol de angico" loading="lazy"></div>
         <figcaption>el angico, de verdad</figcaption>
       </figure>
+    </div>
+
+    <div class="piece">
+      <section class="note note--clip">
+        <span class="note__tag">artículo</span>
+        <p class="note--clip__title">Com espumosa e água doce: uma análise da comunicação dos encantados do Tambor de Mina em São Paulo</p>
+        <p class="note--clip__meta">Estrela, Y.; Petryla, G. — <em>Ambivalências</em>, v. 13, n. 26, 2025.</p>
+        <a class="note--clip__link" href="https://periodicos.ufs.br/Ambivalencias/article/view/n26p159" target="_blank" rel="noopener">leer el artículo ↗</a>
+      </section>
     </div>
 
     <div class="piece piece--flat">
