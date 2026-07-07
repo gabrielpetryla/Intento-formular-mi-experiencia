@@ -1,0 +1,234 @@
+:root {
+  --paper: #eee7d8;
+  --paper-dark: #e2d8c1;
+  --ink: #211f1c;
+  --red: #a83226;
+  --graphite: #565148;
+  --ochre: #b8862c;
+  --teal: #2c5f5a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #d7cbac;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+  color: var(--ink);
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.7;
+  padding: 6vh 4vw 16vh;
+  overflow-x: hidden;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  max-width: 760px;
+  margin: 0 auto 8vh;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.nota {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--red);
+  display: inline-block;
+}
+
+/* ---------- Grid mosaico ---------- */
+.mosaic {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2.4rem 1.8rem;
+  align-items: start;
+}
+
+.shard {
+  position: relative;
+  background: var(--paper);
+  box-shadow:
+    0 22px 40px -20px rgba(25, 20, 10, 0.5),
+    0 60px 60px -50px rgba(25, 20, 10, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+.shard__inner {
+  padding: 2rem 2.1rem 1.9rem;
+  position: relative;
+}
+
+.shard.cut-a { clip-path: polygon(2% 0%, 100% 3%, 98% 96%, 4% 100%, 0% 55%); }
+.shard.cut-b { clip-path: polygon(0% 4%, 96% 0%, 100% 92%, 6% 100%, 0% 60%); }
+.shard.cut-c { clip-path: polygon(3% 0%, 100% 0%, 97% 97%, 55% 100%, 0% 90%); }
+.shard.cut-d { clip-path: polygon(0% 0%, 94% 2%, 100% 100%, 8% 98%, 2% 50%); }
+.shard.cut-e { clip-path: polygon(1% 3%, 99% 0%, 100% 55%, 95% 100%, 0% 97%); }
+
+.shard--1 { grid-column: 1 / 8;  grid-row: 1; }
+.shard--2 { grid-column: 8 / 13; grid-row: 1 / 3; margin-top: 3rem; }
+.shard--3 { grid-column: 1 / 6;  grid-row: 2; margin-top: -1.5rem; }
+.shard--4 { grid-column: 6 / 9;  grid-row: 3; }
+.shard--5 { grid-column: 9 / 13; grid-row: 3; margin-top: 2.2rem; }
+
+/* fita adesiva no canto, feita em CSS puro com sombra dupla p/ parecer semitransparente */
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 38px;
+  width: 90px;
+  height: 30px;
+  background: linear-gradient(120deg, rgba(216, 196, 140, 0.75), rgba(216, 196, 140, 0.45));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  transform: rotate(-4deg);
+  z-index: 3;
+  pointer-events: none;
+}
+.shard--2 .tape,
+.shard--5 .tape {
+  left: auto;
+  right: 38px;
+  transform: rotate(4deg);
+}
+
+/* textura de grão sobreposta, não intercepta cliques */
+.grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.shard__tag {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid var(--red);
+}
+
+.shard__text {
+  font-size: 1.03rem;
+  margin: 0;
+}
+
+.correction {
+  position: relative;
+  white-space: nowrap;
+}
+.correction .struck {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  opacity: 0.65;
+}
+.correction .fix {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3em;
+  color: var(--red);
+  margin-left: 0.15em;
+  transform: rotate(-3deg) translateY(-2px);
+  display: inline-block;
+}
+
+.margin-note {
+  font-family: 'Caveat', cursive;
+  color: var(--red);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  margin-top: 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 2px dashed var(--red);
+  transform: rotate(-1deg);
+}
+
+.shard__video {
+  margin-top: 1.5rem;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.35);
+}
+.shard__video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+
+/* ---------- Fragmento final ---------- */
+.fragmento-final {
+  max-width: 480px;
+  margin: 9vh auto 0;
+  text-align: center;
+  padding: 2.4rem 1.6rem;
+}
+.fragmento-final p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  max-width: 760px;
+  margin: 10vh auto 0;
+  padding: 0 1rem;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: var(--ink);
+  opacity: 0.55;
+  letter-spacing: 0.03em;
+  border-top: 1px dashed var(--graphite);
+  padding-top: 1.2rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .mosaic { grid-template-columns: repeat(6, 1fr); gap: 2rem 1.2rem; }
+  .shard--1 { grid-column: 1 / 7; grid-row: 1; }
+  .shard--2 { grid-column: 1 / 7; grid-row: 2; margin-top: 0; }
+  .shard--3 { grid-column: 1 / 4; grid-row: 3; margin-top: 0; }
+  .shard--4 { grid-column: 4 / 7; grid-row: 3; }
+  .shard--5 { grid-column: 1 / 7; grid-row: 4; margin-top: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  body { padding: 6vh 3vw 14vh; }
+  .mosaic { grid-template-columns: 1fr; gap: 2.2rem; }
+  .shard--1, .shard--2, .shard--3, .shard--4, .shard--5 {
+    grid-column: 1; grid-row: auto; margin-top: 0;
+  }
+  .shard { clip-path: none !important; }
+  .shard__inner { padding: 1.7rem 1.5rem 1.6rem; }
+}
