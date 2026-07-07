@@ -82,7 +82,7 @@
     z-index:1;
     max-width:1300px;
     margin:0 auto;
-    min-height:265vh;
+    min-height:295vh;
     padding: 0 3vw;
   }
 
@@ -98,10 +98,47 @@
   .thread-layer path{
     fill:none;
     stroke: var(--red);
-    stroke-width:1.6;
-    opacity:0.55;
+    stroke-width:2.2;
+    opacity:0.85;
     stroke-linecap:round;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 0 3px rgba(179,58,44,0.6)) drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+  }
+  .thread-layer path.thread--trunk{
+    stroke-width:3;
+    opacity:0.95;
+  }
+
+  .hub{
+    position:absolute;
+    top:-6vh;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:7;
+    width:150px;
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .hub__ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #3a2c1e 0%, #241a13 70%);
+    border: 2px solid var(--red);
+    box-shadow:
+      0 0 0 6px rgba(179,58,44,0.15),
+      0 10px 24px rgba(0,0,0,0.6);
+  }
+  .hub__label{
+    position:relative;
+    font-family:'Fraunces', Georgia, serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1rem;
+    line-height:1.2;
+    color: var(--paper);
   }
 
   .pin{
@@ -235,43 +272,48 @@
      Vídeo/foto "irmãos" de cada nota = tamanho normal, logo ao lado.
      Vídeos extras (músicas) = menores, ao fundo, intercalados — nunca isolados. */
 
+  /* ---------- posições: 3 faixas fixas, para nunca sobrepor texto e vídeo ---------- */
+  /* Faixa A (esquerda, 2-8%): notas de texto — sempre a âncora principal.
+     Faixa B (centro, 46%): o vídeo "irmão" de cada nota.
+     Faixa C (direita, 72-85%): fotos e músicas extras, em duas subcolunas menores. */
+
   .note--1{ width:300px; }
   .note--3{ width:280px; }
   .note--5{ width:340px; }
 
-  .note--1  { top: 1vh;   left: 2%;   --rot:-7deg; transform: translate(-70px,20px) rotate(-13deg); z-index:8; }
-  .monitor--1{ top: 8vh;   left: 44%;  --rot:5deg;  transform: translate(70px,20px) rotate(11deg); z-index:4; }
-  .photo--3 { top: 4vh;   left: 80%;  --rot:8deg;  transform: translate(40px,-20px) rotate(16deg); }
-  .scrap--1 { top: 30vh;  left: 68%;  --rot:9deg; }
+  .note--1   { top: 0vh;   left: 3%; --rot:-6deg; transform: translate(-70px,20px) rotate(-12deg); z-index:8; }
+  .note--2   { top: 44vh;  left: 5%; --rot:5deg;  transform: translate(-70px,20px) rotate(11deg);  z-index:7; }
+  .note--3   { top: 88vh;  left: 7%; --rot:-8deg; transform: translate(0,70px) rotate(-5deg) scale(.9); z-index:9; }
+  .note--4   { top: 132vh; left: 4%; --rot:4deg;  transform: translate(-70px,20px) rotate(10deg);  z-index:6; }
+  .note--5   { top: 176vh; left: 6%; --rot:-5deg; transform: translate(-70px,20px) rotate(-11deg); z-index:8; }
 
-  .monitor--6{ top: 36vh;  left: 80%; --rot:9deg;  transform: translate(50px,20px) rotate(15deg); z-index:2; width:190px; }
+  .monitor--1{ top: 14vh;  left: 46%; --rot:5deg;  transform: translate(70px,20px) rotate(11deg); z-index:4; }
+  .monitor--2{ top: 58vh;  left: 46%; --rot:-6deg; transform: translate(70px,20px) rotate(-11deg); z-index:4; }
+  .monitor--3{ top: 102vh; left: 46%; --rot:7deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
+  .monitor--4{ top: 146vh; left: 46%; --rot:-5deg; transform: translate(70px,20px) rotate(-11deg); z-index:4; }
+  .monitor--5{ top: 190vh; left: 46%; --rot:8deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
 
-  .monitor--2{ top: 30vh;  left: 3%;   --rot:-6deg; transform: translate(-70px,25px) rotate(-11deg); z-index:3; }
-  .note--2  { top: 46vh;  left: 38%;  --rot:6deg;  transform: translate(70px,20px) rotate(12deg); z-index:7; }
-  .photo--4 { top: 62vh;  left: 4%;  --rot:-7deg; transform: translate(-40px,20px) rotate(-14deg); }
+  /* Faixa C — subcoluna 1 */
+  .photo--3 { top: 6vh;   left: 72%; --rot:8deg;  transform: translate(40px,-20px) rotate(15deg); }
+  .monitor--7{ top: 60vh;  left: 72%; --rot:-7deg; transform: translate(50px,20px) rotate(-13deg); z-index:2; width:150px; }
+  .photo--1 { top: 114vh; left: 72%; --rot:6deg;  transform: translate(40px,20px) rotate(13deg); }
+  .monitor--9{ top: 168vh; left: 72%; --rot:-8deg; transform: translate(-50px,20px) rotate(-14deg); z-index:2; width:150px; }
+  .photo--5 { top: 222vh; left: 72%; --rot:5deg;  transform: translate(40px,20px) rotate(11deg); }
 
-  .monitor--7{ top: 70vh; left: 66%; --rot:-8deg; transform: translate(50px,20px) rotate(-14deg); z-index:2; width:190px; }
+  /* Faixa C — subcoluna 2 */
+  .monitor--6{ top: 28vh;  left: 85%; --rot:9deg;  transform: translate(50px,20px) rotate(14deg); z-index:2; width:150px; }
+  .photo--4 { top: 82vh;  left: 85%; --rot:-7deg; transform: translate(-40px,20px) rotate(-13deg); }
+  .monitor--8{ top: 136vh; left: 85%; --rot:8deg;  transform: translate(50px,20px) rotate(13deg); z-index:2; width:150px; }
+  .photo--2 { top: 190vh; left: 85%; --rot:-5deg; transform: translate(40px,20px) rotate(-12deg); }
+  .photo--6 { top: 244vh; left: 85%; --rot:-4deg; transform: translate(30px,30px) rotate(-10deg); width:170px; }
 
-  .note--3  { top: 90vh;  left: 8%;   --rot:-9deg; transform: translate(0,70px) rotate(-6deg) scale(.88); z-index:9; }
-  .monitor--3{ top: 86vh;  left: 46%;  --rot:7deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
-  .scrap--2 { top: 96vh;  left: 78%;  --rot:-6deg; }
-
-  .monitor--4{ top: 122vh; left: 1%;   --rot:-5deg; transform: translate(-70px,20px) rotate(-11deg); z-index:3; }
-  .note--4  { top: 116vh; left: 40%;  --rot:4deg;  transform: translate(70px,20px) rotate(11deg); z-index:6; }
-  .photo--1 { top: 112vh; left: 78%; --rot:6deg;  transform: translate(40px,20px) rotate(14deg); }
-
-  .monitor--8{ top: 150vh; left: 66%; --rot:8deg;  transform: translate(50px,20px) rotate(14deg); z-index:2; width:190px; }
-  .scrap--3 { top: 144vh; left: 6%;  --rot:5deg; }
-
-  .note--5  { top: 164vh; left: 8%;   --rot:-6deg; transform: translate(-70px,20px) rotate(-12deg); z-index:8; }
-  .monitor--5{ top: 174vh; left: 46%;  --rot:8deg;  transform: translate(70px,20px) rotate(12deg); z-index:4; }
-  .photo--2 { top: 168vh; left: 80%; --rot:-5deg; transform: translate(40px,20px) rotate(-12deg); }
-
-  .monitor--9{ top: 200vh; left: 8%;  --rot:-9deg; transform: translate(-50px,20px) rotate(-15deg); z-index:2; width:190px; }
-  .photo--5 { top: 196vh; left: 66%; --rot:5deg;  transform: translate(40px,20px) rotate(12deg); }
+  /* pequenos restos de papel, só decorativos, entre as faixas A e B */
+  .scrap--1 { top: 24vh;  left: 30%; --rot:9deg; }
+  .scrap--2 { top: 68vh;  left: 30%; --rot:-6deg; }
+  .scrap--3 { top: 154vh; left: 30%; --rot:5deg; }
 
   .note--final{
-    top:222vh; left:22%; width:380px; --rot:-2deg;
+    top:252vh; left:20%; width:380px; --rot:-2deg;
     transform: translate(0,50px) rotate(6deg) scale(.88);
     z-index:10;
   }
@@ -281,8 +323,6 @@
     font-size:1.7rem;
     text-align:center;
   }
-
-  .photo--6{ top: 250vh; left: 42%; --rot:-4deg; transform: translate(30px,30px) rotate(-10deg); width:200px; }
 
   /* ---------- Fotos reais, estilo polaroide ---------- */
   .photo{
@@ -383,7 +423,12 @@
 <div class="board" id="board">
   <svg class="thread-layer" id="threads"></svg>
 
-  <section class="note note--1" id="note-1" data-link="monitor-1">
+  <div class="hub" id="hub">
+    <span class="hub__ring"></span>
+    <span class="hub__label">intento<br>formular</span>
+  </div>
+
+  <section class="note note--1" id="note-1" data-link="monitor-1" data-primary="true">
     <span class="pin"></span>
     <span class="note__tag">objeto directo</span>
     <p>Nunca me pareció lo ideal ser el responsable de capacitar a otras personas, al menos no tan temprano. 19 años y una sala de clases. Yo tenía alumnos de <span class="redact" tabindex="0">18</span>. Me sentí como un objeto directo, pero incompleto, en busca de «la a personal» que me daría una identidad propia.</p>
@@ -411,7 +456,7 @@
 
   <div class="scrap scrap--2" id="scrap-2"></div>
 
-  <section class="note note--2" id="note-2" data-link="monitor-2">
+  <section class="note note--2" id="note-2" data-link="monitor-2" data-primary="true">
     <span class="pin"></span>
     <span class="note__tag">cruce</span>
     <p>¿Elección? No, pasos omitidos. Pasante no fui, ya era el profesor en el tercer semestre de la facultad. Culpa del <span class="redact" tabindex="0">dinero</span> o de la falta de él. Tal vez sea la ciudad que me cooptó o la familia que en otro lugar
@@ -420,7 +465,7 @@
     <p class="margin-note">las dos lenguas pelean por la misma frase</p>
   </section>
 
-  <section class="note note--3" id="note-3" data-link="monitor-3,monitor-1">
+  <section class="note note--3" id="note-3" data-link="monitor-3,monitor-1" data-primary="true">
     <span class="pin"></span>
     <span class="note__tag">esperpento</span>
     <p>Me siento un esperpento de Valle-Inclán, sin saber si soy títere o titiritero. Una vez me llamaron de <span class="redact" tabindex="0">basura</span>, pero fue un alumno en cientos. También fue apenas una alumna que tuve la experiencia de almorzar junto en el «bandejão» después que entró en la USP con mi ayuda.</p>
@@ -444,7 +489,7 @@
     </div>
   </div>
 
-  <section class="note note--4" id="note-4" data-link="monitor-4,photo-1">
+  <section class="note note--4" id="note-4" data-link="monitor-4,photo-1" data-primary="true">
     <span class="pin"></span>
     <span class="note__tag">raíz</span>
     <p>Mi madre señala que cuando era un bebé decían que tenía manos de educador. Reprobé algunas veces debido a la falta de tiempo causada por el trabajo. Planté un angico cuando niño, mismo nombre de la ciudad donde Paulo Freire comenzó. Él aprendió con sus alumnos.</p>
@@ -452,7 +497,7 @@
 
   <div class="scrap scrap--3" id="scrap-3"></div>
 
-  <section class="note note--5" id="note-5" data-link="monitor-5,note-final">
+  <section class="note note--5" id="note-5" data-link="monitor-5,note-final" data-primary="true">
     <span class="pin"></span>
     <span class="note__tag">guernica</span>
     <p>Los mismos compañeros docentes que me elogian, me aconsejan dejar la educación básica y dedicarme a la investigación académica. Una Guernica interior, disculpa la comparación. Viviendo un <span class="redact" tabindex="0">luto</span> a los 22 por una juventud que no es mía, ayudando la juventud de otras personas.</p>
@@ -575,23 +620,34 @@ function drawThreads() {
   svg.setAttribute('height', board.scrollHeight);
   svg.innerHTML = '';
 
+  function addPath(a, b, isTrunk) {
+    const midX = (a.x + b.x) / 2;
+    const sway = 40 * (a.y > b.y ? -1 : 1);
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute(
+      'd',
+      `M ${a.x} ${a.y} Q ${midX} ${(a.y + b.y) / 2 + sway} ${b.x} ${b.y}`
+    );
+    if (isTrunk) path.classList.add('thread--trunk');
+    svg.appendChild(path);
+  }
+
+  // Tronco: do hub central até cada nota principal
+  const hub = document.getElementById('hub');
+  if (hub) {
+    const hubCenter = elCenter(hub, boardRect);
+    document.querySelectorAll('.note[data-primary="true"]').forEach((note) => {
+      addPath(hubCenter, elCenter(note, boardRect), true);
+    });
+  }
+
+  // Ramificações: de cada nota até sua mídia associada
   document.querySelectorAll('.note[data-link]').forEach((note) => {
     const targetIds = note.getAttribute('data-link').split(',');
     targetIds.forEach((targetId) => {
       const target = document.getElementById(targetId.trim());
       if (!target) return;
-
-      const a = elCenter(note, boardRect);
-      const b = elCenter(target, boardRect);
-      const midX = (a.x + b.x) / 2;
-      const sway = 40 * (a.y > b.y ? -1 : 1);
-
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute(
-        'd',
-        `M ${a.x} ${a.y} Q ${midX} ${(a.y + b.y) / 2 + sway} ${b.x} ${b.y}`
-      );
-      svg.appendChild(path);
+      addPath(elCenter(note, boardRect), elCenter(target, boardRect), false);
     });
   });
 }
