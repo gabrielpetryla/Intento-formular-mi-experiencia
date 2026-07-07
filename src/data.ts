@@ -20,6 +20,11 @@ export interface Fragment {
   enter: EnterDirection
   gridClass: string
   photoRotation: number
+  /** 'pin' ou 'tape' — varia o jeito como o fragmento parece fixado no mural */
+  fixture: 'pin' | 'tape'
+  /** Preencha depois com o caminho da imagem (ex: '/fotos/turma-2019.jpg') */
+  photoSrc?: string
+  photoCaption?: string
 }
 
 export const fragments: Fragment[] = [
@@ -35,6 +40,8 @@ export const fragments: Fragment[] = [
     enter: 'left',
     gridClass: 'shard--1',
     photoRotation: -1.5,
+    fixture: 'pin',
+    photoCaption: 'la sala, 19 años',
   },
   {
     id: 2,
@@ -49,6 +56,8 @@ export const fragments: Fragment[] = [
     enter: 'right',
     gridClass: 'shard--2',
     photoRotation: 1.6,
+    fixture: 'tape',
+    photoCaption: 'dos lenguas, una boca',
   },
   {
     id: 3,
@@ -62,6 +71,8 @@ export const fragments: Fragment[] = [
     enter: 'up',
     gridClass: 'shard--3',
     photoRotation: -1.2,
+    fixture: 'pin',
+    photoCaption: 'el bandejão, USP',
   },
   {
     id: 4,
@@ -75,6 +86,8 @@ export const fragments: Fragment[] = [
     enter: 'pop',
     gridClass: 'shard--4',
     photoRotation: -1.8,
+    fixture: 'tape',
+    photoCaption: 'el angico, de niño',
   },
   {
     id: 5,
@@ -88,6 +101,8 @@ export const fragments: Fragment[] = [
     enter: 'right',
     gridClass: 'shard--5',
     photoRotation: 1.6,
+    fixture: 'pin',
+    photoCaption: 'luto a los 22',
   },
 ]
 
