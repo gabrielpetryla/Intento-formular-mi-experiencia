@@ -7,17 +7,17 @@
 <title>Intento formular mi experiencia de enseñar tan temprano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Special+Elite&family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,600&family=Special+Elite&family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --board: #2c2118;
-    --board-2: #241a13;
-    --paper: #efe6d0;
-    --paper-2: #e2d2a3;
-    --ink: #201a13;
-    --red: #b33a2c;
-    --redact: #100c08;
-    --pencil: #55493a;
+    --void: #0d0808;
+    --void-2: #170a09;
+    --blood: #9c1c1c;
+    --blood-bright: #c62828;
+    --paper: #e9ddc4;
+    --paper-2: #dccca3;
+    --ink: #1a1210;
+    --pencil: #4a3c33;
   }
 
   *{ box-sizing:border-box; }
@@ -25,163 +25,128 @@
 
   body{
     margin:0;
-    background: radial-gradient(ellipse at 50% 0%, #3a2c1e 0%, var(--board) 55%, var(--board-2) 100%);
+    background: var(--void);
     color: var(--paper);
     font-family:'Lora', Georgia, serif;
     overflow-x:hidden;
   }
 
+  /* Fundo: veios/manchas vermelhas emanando do centro, textura granulada */
   body::before{
     content:'';
     position:fixed;
     inset:0;
-    pointer-events:none;
     z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(156,28,28,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 85% 30%, rgba(156,28,28,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 90%, rgba(156,28,28,0.16) 0%, transparent 65%),
+      var(--void-2);
+  }
+  body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:0.5;
     background-image:
-      repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px),
-      repeating-linear-gradient(25deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 5px);
+      repeating-linear-gradient(120deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px);
   }
 
-  /* ---------- Cabeçalho ---------- */
+  /* ---------- Título: pôster rasgado ---------- */
   .intro{
     position:relative;
     z-index:2;
-    max-width:640px;
+    max-width:720px;
     margin:0 auto;
-    padding: 8vh 1.5rem 2vh;
+    padding: 9vh 1.5rem 6vh;
     text-align:center;
+  }
+  .intro h1{
+    font-family:'Fraunces', Georgia, serif;
+    font-style:italic;
+    font-weight:600;
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+    line-height:1.3;
+    margin:0 0 1rem;
+    color: var(--paper);
+    text-shadow:
+      0 0 18px rgba(156,28,28,0.5),
+      2px 2px 0 rgba(156,28,28,0.35);
   }
   .intro .sub{
     font-family:'Caveat', cursive;
     font-size:1.3rem;
-    color: var(--red);
+    color: var(--blood-bright);
   }
   .intro .instructions{
     font-family:'Special Elite', 'Courier New', monospace;
-    font-size:0.62rem;
+    font-size:0.6rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
     color: var(--paper);
-    opacity:0.45;
-    margin-top:1rem;
+    opacity:0.4;
+    margin-top:1.2rem;
   }
 
-  /* ---------- Hub central ---------- */
-  .hub-row{
-    display:flex;
-    justify-content:center;
-    position:relative;
-    z-index:2;
-    margin-bottom:1rem;
-  }
-  .hub{
-    width: min(420px, 82vw);
-    min-height:180px;
-    padding: 1.6rem 2rem;
-    border-radius: 50% / 38%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background: radial-gradient(circle at 35% 30%, #3a2c1e 0%, #241a13 70%);
-    border: 2px solid var(--red);
-    box-shadow:
-      0 0 0 6px rgba(179,58,44,0.15),
-      0 14px 30px rgba(0,0,0,0.6);
-  }
-  .hub__label{
-    font-family:'Fraunces', Georgia, serif;
-    font-style:italic;
-    font-weight:500;
-    font-size: clamp(1.05rem, 2.6vw, 1.5rem);
-    line-height:1.35;
-    color: var(--paper);
-  }
-
-  /* ---------- Mesa: grid seguro, sem sobreposição ---------- */
+  /* ---------- Colagem: masonry por colunas, sem overlap, sem fios ---------- */
   .board{
     position:relative;
-    z-index:1;
-    max-width:1100px;
-    margin:0 auto;
-    padding: 2vh 4vw 8vh;
-    display:flex;
-    flex-direction:column;
-    gap: 6rem;
-  }
-
-  .thread-layer{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:0;
-    pointer-events:none;
-    overflow:visible;
-  }
-  .thread-layer path{
-    fill:none;
-    stroke: var(--red);
-    stroke-width:2;
-    opacity:0.75;
-    stroke-linecap:round;
-    filter: drop-shadow(0 0 3px rgba(179,58,44,0.55)) drop-shadow(0 1px 1px rgba(0,0,0,0.5));
-  }
-  .thread-layer path.thread--trunk{
-    stroke-width:2.6;
-    opacity:0.9;
-  }
-
-  /* ---------- Unidade: nota + seu vídeo, lado a lado, sem sobrepor ---------- */
-  .unit{
-    position:relative;
     z-index:2;
-    display:flex;
-    flex-wrap:wrap;
-    gap: 2.4rem;
-    align-items:flex-start;
+    max-width:1200px;
+    margin:0 auto;
+    padding: 0 4vw 10vh;
+    column-count:3;
+    column-gap: 2rem;
   }
-  .unit--right{ justify-content:flex-end; }
-  .unit--right .note{ order:2; }
-  .unit--right .monitor{ order:1; }
+  @media (max-width:1000px){ .board{ column-count:2; } }
+  @media (max-width:640px){ .board{ column-count:1; } }
 
-  .pin{
-    position:absolute;
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    left:50%;
-    top:-7px;
-    transform:translateX(-50%);
-    background: radial-gradient(circle at 35% 30%, #f6d9d0 0%, var(--red) 45%, #6a1f16 100%);
-    box-shadow: 0 3px 5px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.5);
-    z-index:6;
+  .piece{
+    break-inside: avoid;
+    margin-bottom: 2.4rem;
+    opacity:0;
+    transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(.16,.8,.24,1);
   }
+  .piece.in-view{ opacity:1; transform: rotate(var(--rot,0deg)) !important; }
 
-  /* ---------- Notas (fragmentos de texto) ---------- */
+  .piece:nth-child(6n+1){ --rot:-3deg; }
+  .piece:nth-child(6n+2){ --rot:2.5deg; }
+  .piece:nth-child(6n+3){ --rot:-1.5deg; }
+  .piece:nth-child(6n+4){ --rot:3deg; }
+  .piece:nth-child(6n+5){ --rot:-2.5deg; }
+  .piece:nth-child(6n+6){ --rot:1.5deg; }
+
+  /* ---------- Notas de texto ---------- */
   .note{
     position:relative;
-    flex: 1 1 320px;
-    max-width: 400px;
     background: linear-gradient(175deg, var(--paper), var(--paper-2));
-    padding: 1.9rem 2rem 1.7rem;
+    padding: 1.8rem 1.9rem 1.6rem;
     box-shadow:
-      0 3px 4px rgba(0,0,0,0.3),
-      0 20px 26px -14px rgba(0,0,0,0.55),
-      0 45px 45px -30px rgba(0,0,0,0.5);
+      0 3px 4px rgba(0,0,0,0.4),
+      0 20px 30px -16px rgba(0,0,0,0.75),
+      0 0 0 1px rgba(156,28,28,0.15);
     color: var(--ink);
-    opacity:0;
-    transition: opacity 1s ease-out, transform 1s cubic-bezier(.16,.8,.24,1);
   }
-  .note.in-view{ opacity:1; transform: translate(0,0) rotate(var(--rot,0deg)) !important; }
-
+  .note::before{
+    content:'';
+    position:absolute;
+    top:-10px; left:50%;
+    transform:translateX(-50%);
+    width:22px; height:22px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #e88 0%, var(--blood) 45%, #4a0d0d 100%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.5);
+  }
   .note__tag{
     font-family:'Special Elite','Courier New',monospace;
-    font-size:0.64rem;
+    font-size:0.63rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
     color: var(--pencil);
-    border-bottom:2px solid var(--red);
+    border-bottom:2px solid var(--blood);
     padding-bottom:0.2rem;
     display:inline-block;
     margin-bottom:0.9rem;
@@ -189,7 +154,7 @@
   .note p{ margin:0; font-size:1rem; }
 
   .redact{
-    background: var(--redact);
+    background: #0a0605;
     color: transparent;
     padding: 0 0.15em;
     border-radius:1px;
@@ -198,17 +163,17 @@
   }
   .redact:hover, .redact:focus{
     background: transparent;
-    color: var(--red);
-    text-decoration: underline wavy var(--red);
+    color: var(--blood);
+    text-decoration: underline wavy var(--blood);
   }
 
   .correction{ white-space:nowrap; }
-  .correction .struck{ text-decoration:line-through; text-decoration-color:var(--red); opacity:0.6; }
+  .correction .struck{ text-decoration:line-through; text-decoration-color:var(--blood); opacity:0.6; }
   .correction .fix{
     font-family:'Caveat', cursive;
     font-weight:700;
     font-size:1.3em;
-    color: var(--red);
+    color: var(--blood);
     margin-left:0.15em;
     display:inline-block;
     transform: rotate(-4deg) translateY(-2px);
@@ -216,28 +181,19 @@
 
   .margin-note{
     font-family:'Caveat', cursive;
-    color: var(--red);
+    color: var(--blood-bright);
     font-size:1.15rem;
     margin-top:0.8rem;
-    transform: rotate(-1.5deg);
   }
 
-  /* ---------- Monitores de vídeo ---------- */
-  .monitor{
-    position:relative;
-    flex: 1 1 280px;
-    max-width: 320px;
-    opacity:0;
-    transition: opacity 1.1s ease-out 0.15s, transform 1.1s cubic-bezier(.16,.8,.24,1) 0.15s;
-  }
-  .monitor.in-view{ opacity:1; transform: translate(0,0) rotate(var(--rot,0deg)) !important; }
-
+  /* ---------- Vídeos: monitores de vigilância avermelhados ---------- */
   .monitor__bezel{
-    background: #14100c;
-    padding: 10px 10px 26px;
+    background: #0a0605;
+    padding: 9px 9px 24px;
     box-shadow:
-      0 4px 6px rgba(0,0,0,0.4),
-      0 22px 30px -16px rgba(0,0,0,0.65);
+      0 4px 6px rgba(0,0,0,0.5),
+      0 22px 32px -16px rgba(0,0,0,0.8),
+      0 0 0 1px rgba(156,28,28,0.25);
   }
   .monitor__screen{ position:relative; overflow:hidden; }
   .monitor__screen iframe{
@@ -245,13 +201,16 @@
     width:100%;
     aspect-ratio:16/9;
     border:none;
+    filter: saturate(0.85) contrast(1.05);
   }
   .monitor__screen::after{
     content:'';
     position:absolute;
     inset:0;
     pointer-events:none;
-    background: repeating-linear-gradient(rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px);
+    background:
+      repeating-linear-gradient(rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),
+      linear-gradient(rgba(156,28,28,0.08), transparent 40%);
     mix-blend-mode:overlay;
   }
   .monitor__label{
@@ -260,36 +219,28 @@
     gap:0.4rem;
     margin-top:0.6rem;
     font-family:'Special Elite','Courier New',monospace;
-    font-size:0.58rem;
+    font-size:0.57rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:#b8ac93;
+    color:#b89a8f;
   }
   .monitor__label .dot{
     width:7px; height:7px; border-radius:50%;
-    background: var(--red);
-    box-shadow:0 0 5px var(--red);
+    background: var(--blood-bright);
+    box-shadow:0 0 6px var(--blood-bright);
+    animation: blink 2.4s ease-in-out infinite;
   }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-  .unit .photo{
-    flex: 0 1 160px;
-    max-width:170px;
-    align-self:flex-start;
-  }
-  .monitor--mini{
-    flex: 1 1 200px;
-    max-width:220px;
-  }
-    position:relative;
-    background:#fffdf8;
+  /* ---------- Fotos ---------- */
+  .photo{
+    background:#050302;
     padding: 8px 8px 26px;
     box-shadow:
-      0 3px 5px rgba(0,0,0,0.35),
-      0 20px 24px -14px rgba(0,0,0,0.6);
-    opacity:0;
-    transition: opacity 1.1s ease-out, transform 1.1s cubic-bezier(.16,.8,.24,1);
+      0 3px 5px rgba(0,0,0,0.5),
+      0 20px 28px -14px rgba(0,0,0,0.8),
+      0 0 0 1px rgba(156,28,28,0.2);
   }
-  .photo.in-view{ opacity:1; transform: rotate(var(--rot,0deg)) !important; }
   .photo__frame{
     width:100%;
     aspect-ratio: 4/5;
@@ -300,66 +251,74 @@
     width:100%;
     height:100%;
     object-fit:cover;
-    filter: sepia(0.08) contrast(1.03);
+    filter: sepia(0.15) saturate(1.1) contrast(1.05) hue-rotate(-6deg);
     display:block;
   }
   .photo figcaption{
     font-family:'Caveat', cursive;
     font-size:1rem;
-    color: var(--ink);
+    color: var(--paper);
     text-align:center;
     margin-top:0.5rem;
+  }
+
+  /* ---------- Bilhete final ---------- */
+  .note--final{
+    text-align:center;
+    background: linear-gradient(175deg, #1a0f0d, #100807);
+    color: var(--paper);
+    box-shadow:
+      0 3px 4px rgba(0,0,0,0.5),
+      0 20px 30px -16px rgba(0,0,0,0.8),
+      0 0 0 1px rgba(156,28,28,0.3);
+  }
+  .note--final::before{ background: radial-gradient(circle at 35% 30%, #e88 0%, var(--blood) 45%, #4a0d0d 100%); }
+  .note--final p{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:1.7rem;
+    margin:0;
   }
 
   footer{
     position:relative; z-index:2;
     max-width:640px;
-    margin: 4vh auto 0;
+    margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
     font-family:'Special Elite','Courier New',monospace;
-    font-size:0.6rem;
+    font-size:0.58rem;
     color: var(--paper);
-    opacity:0.4;
+    opacity:0.35;
     text-align:center;
     letter-spacing:0.03em;
-    border-top:1px dashed rgba(239,230,208,0.3);
+    border-top:1px dashed rgba(156,28,28,0.3);
   }
 
   @media (prefers-reduced-motion: reduce){
-    .note, .monitor, .photo{ transition:none; opacity:1; transform:none !important; }
-  }
-
-  @media (max-width: 700px){
-    .thread-layer{ display:none; }
-    .unit{ flex-direction:column !important; }
-    .unit .note, .unit .monitor{ order:0 !important; max-width:100%; }
-    .hub{ width:120px; height:120px; }
+    .piece{ transition:none; opacity:1; transform:none !important; }
+    .monitor__label .dot{ animation:none; }
   }
 </style>
 </head>
 <body>
 
 <div class="intro">
-  <p class="sub">— instalación: una mesa de trabajo, no un texto —</p>
+  <h1>Intento formular mi experiencia de enseñar tan temprano</h1>
+  <p class="sub">— fragmentos, sin orden, sin hilo que los una —</p>
   <p class="instructions">algunas palabras están tachadas — pase el cursor para revelarlas</p>
 </div>
 
-<div class="hub-row">
-  <div class="hub" id="hub">
-    <span class="hub__label">Intento formular mi experiencia de enseñar tan temprano</span>
-  </div>
-</div>
-
 <div class="board" id="board">
-  <svg class="thread-layer" id="threads"></svg>
 
-  <div class="unit" id="unit-1">
-    <section class="note" id="note-1" data-primary="true" style="--rot:-1.5deg">
-      <span class="pin"></span>
+  <div class="piece">
+    <section class="note">
       <span class="note__tag">objeto directo</span>
       <p>Nunca me pareció lo ideal ser el responsable de capacitar a otras personas, al menos no tan temprano. 19 años y una sala de clases. Yo tenía alumnos de <span class="redact" tabindex="0">18</span>. Me sentí como un objeto directo, pero incompleto, en busca de «la a personal» que me daría una identidad propia.</p>
     </section>
-    <div class="monitor" id="monitor-1" style="--rot:1.5deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/cyr7SdyHxYE" title="Volver A Los 17" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -367,11 +326,38 @@
         <div class="monitor__label"><span class="dot"></span> reg. 01 — volver a los 17</div>
       </div>
     </div>
-    <figure class="photo" id="photo-3" style="--rot:5deg">
+  </div>
+
+  <div class="piece">
+    <figure class="photo">
       <div class="photo__frame"><img src="fotos/pantera-cor-de-rosa.jpeg" alt="Dibujo de la Pantera Rosa hecho por un alumno" loading="lazy"></div>
       <figcaption>lo que dibujan de mí</figcaption>
     </figure>
-    <div class="monitor monitor--mini" id="monitor-6" style="--rot:-4deg">
+  </div>
+
+  <div class="piece">
+    <section class="note">
+      <span class="note__tag">cruce</span>
+      <p>¿Elección? No, pasos omitidos. Pasante no fui, ya era el profesor en el tercer semestre de la facultad. Culpa del <span class="redact" tabindex="0">dinero</span> o de la falta de él. Tal vez sea la ciudad que me cooptó o la familia que en otro lugar
+        <span class="correction"><span class="struck">ficó</span><span class="fix">quedó</span></span>,
+        las lenguas se cruzan como mis certezas.</p>
+      <p class="margin-note">las dos lenguas pelean por la misma frase</p>
+    </section>
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/7npteIDi8gA" title="No hay Orisha como Eleggua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 02 — eleggua</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/j3MLNFPGEpw" title="Yáyá Massemba" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -381,44 +367,22 @@
     </div>
   </div>
 
-  <div class="unit unit--right" id="unit-2">
-    <section class="note" id="note-2" data-primary="true" style="--rot:1.5deg">
-      <span class="pin"></span>
-      <span class="note__tag">cruce</span>
-      <p>¿Elección? No, pasos omitidos. Pasante no fui, ya era el profesor en el tercer semestre de la facultad. Culpa del <span class="redact" tabindex="0">dinero</span> o de la falta de él. Tal vez sea la ciudad que me cooptó o la familia que en otro lugar
-        <span class="correction"><span class="struck">ficó</span><span class="fix">quedó</span></span>,
-        las lenguas se cruzan como mis certezas.</p>
-      <p class="margin-note">las dos lenguas pelean por la misma frase</p>
-    </section>
-    <div class="monitor" id="monitor-2" style="--rot:-1.5deg">
-      <div class="monitor__bezel">
-        <div class="monitor__screen">
-          <iframe src="https://www.youtube-nocookie.com/embed/7npteIDi8gA" title="No hay Orisha como Eleggua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="monitor__label"><span class="dot"></span> reg. 02 — eleggua</div>
-      </div>
-    </div>
-    <figure class="photo" id="photo-4" style="--rot:-4deg">
+  <div class="piece">
+    <figure class="photo">
       <div class="photo__frame"><img src="fotos/turma.jpeg" alt="Foto de grupo con alumnos" loading="lazy"></div>
       <figcaption>los que aprendieron conmigo</figcaption>
     </figure>
-    <div class="monitor monitor--mini" id="monitor-7" style="--rot:4deg">
-      <div class="monitor__bezel">
-        <div class="monitor__screen">
-          <iframe src="https://www.youtube-nocookie.com/embed/3pWuLoWEfvI" title="Dinossauros (acústico)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-        </div>
-        <div class="monitor__label"><span class="dot"></span> reg. 07 — dinossauros</div>
-      </div>
-    </div>
   </div>
 
-  <div class="unit" id="unit-3">
-    <section class="note" id="note-3" data-primary="true" style="--rot:-2deg">
-      <span class="pin"></span>
+  <div class="piece">
+    <section class="note">
       <span class="note__tag">esperpento</span>
       <p>Me siento un esperpento de Valle-Inclán, sin saber si soy títere o titiritero. Una vez me llamaron de <span class="redact" tabindex="0">basura</span>, pero fue un alumno en cientos. También fue apenas una alumna que tuve la experiencia de almorzar junto en el «bandejão» después que entró en la USP con mi ayuda.</p>
     </section>
-    <div class="monitor" id="monitor-3" style="--rot:2deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/Y2SwrG5qHEE" title="Lobo-hombre en París" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -426,11 +390,17 @@
         <div class="monitor__label"><span class="dot"></span> reg. 03 — lobo-hombre</div>
       </div>
     </div>
-    <figure class="photo" id="photo-2" style="--rot:4deg">
+  </div>
+
+  <div class="piece">
+    <figure class="photo">
       <div class="photo__frame"><img src="fotos/mural-humildade.jpeg" alt="Mural: un buen lugar se construye con humildad" loading="lazy"></div>
       <figcaption>un buen lugar se construye con humildad</figcaption>
     </figure>
-    <div class="monitor monitor--mini" id="monitor-8" style="--rot:-4deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/SBHCY81_4jQ" title="Sonhos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -440,13 +410,15 @@
     </div>
   </div>
 
-  <div class="unit unit--right" id="unit-4">
-    <section class="note" id="note-4" data-primary="true" style="--rot:1deg">
-      <span class="pin"></span>
+  <div class="piece">
+    <section class="note">
       <span class="note__tag">raíz</span>
       <p>Mi madre señala que cuando era un bebé decían que tenía manos de educador. Reprobé algunas veces debido a la falta de tiempo causada por el trabajo. Planté un angico cuando niño, mismo nombre de la ciudad donde Paulo Freire comenzó. Él aprendió con sus alumnos.</p>
     </section>
-    <div class="monitor" id="monitor-4" style="--rot:-1deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/zR-_2rH1Bfo" title="Mundi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -454,11 +426,17 @@
         <div class="monitor__label"><span class="dot"></span> reg. 04 — mundi</div>
       </div>
     </div>
-    <figure class="photo" id="photo-1" style="--rot:-4deg">
+  </div>
+
+  <div class="piece">
+    <figure class="photo">
       <div class="photo__frame"><img src="fotos/angico.jpeg" alt="Un árbol de angico" loading="lazy"></div>
       <figcaption>el angico, de verdad</figcaption>
     </figure>
-    <div class="monitor monitor--mini" id="monitor-9" style="--rot:4deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/US0GbUpQ9VU" title="El Gran Varón" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -468,13 +446,15 @@
     </div>
   </div>
 
-  <div class="unit" id="unit-5">
-    <section class="note" id="note-5" data-primary="true" style="--rot:-1.5deg">
-      <span class="pin"></span>
+  <div class="piece">
+    <section class="note">
       <span class="note__tag">guernica</span>
       <p>Los mismos compañeros docentes que me elogian, me aconsejan dejar la educación básica y dedicarme a la investigación académica. Una Guernica interior, disculpa la comparación. Viviendo un <span class="redact" tabindex="0">luto</span> a los 22 por una juventud que no es mía, ayudando la juventud de otras personas.</p>
     </section>
-    <div class="monitor" id="monitor-5" style="--rot:1.5deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
       <div class="monitor__bezel">
         <div class="monitor__screen">
           <iframe src="https://www.youtube-nocookie.com/embed/w4Ulmn5NaHs" title="Todo Pasa" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
@@ -482,26 +462,44 @@
         <div class="monitor__label"><span class="dot"></span> reg. 05 — todo pasa</div>
       </div>
     </div>
-    <figure class="photo" id="photo-5" style="--rot:5deg">
+  </div>
+
+  <div class="piece">
+    <div class="monitor">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/3pWuLoWEfvI" title="Dinossauros (acústico)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 07 — dinossauros</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="piece">
+    <figure class="photo">
       <div class="photo__frame"><img src="fotos/nadar.jpeg" alt="Ilustración: aprendiste a nadar" loading="lazy"></div>
       <figcaption>pra quem não sabia contar gota</figcaption>
     </figure>
   </div>
 
-  <figure class="photo" id="photo-6" style="max-width:200px; margin:0 auto; --rot:-3deg">
-    <div class="photo__frame"><img src="fotos/agradecimento.jpeg" alt="Alumno sosteniendo un cartel de agradecimiento" loading="lazy"></div>
-    <figcaption>lo que quedó, al final</figcaption>
-  </figure>
+  <div class="piece">
+    <figure class="photo">
+      <div class="photo__frame"><img src="fotos/agradecimento.jpeg" alt="Alumno sosteniendo un cartel de agradecimiento" loading="lazy"></div>
+      <figcaption>lo que quedó, al final</figcaption>
+    </figure>
+  </div>
 
-  <section class="note" id="note-final" style="max-width:420px; margin:0 auto; --rot:-1deg;">
-    <span class="note__tag">silencio</span>
-    <p style="font-family:'Caveat',cursive; font-weight:700; font-size:1.7rem; text-align:center;">¿Cómo se es profe cuando todavía te estás convirtiendo en quien vas a ser?</p>
-  </section>
+  <div class="piece">
+    <section class="note note--final">
+      <span class="note__tag">silencio</span>
+      <p>¿Cómo se es profe cuando todavía te estás convirtiendo en quien vas a ser?</p>
+    </section>
+  </div>
 
 </div>
 
 <footer>
-  soporte: instalación — notas, hilo rojo, video incrustado (youtube, dominio sin cookies) — sin narración
+  soporte: colagem — notas, video incrustado (youtube, dominio sin cookies) — sin narración, sin hilo
 </footer>
 
 <script>
@@ -512,55 +510,8 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
-document.querySelectorAll('.note, .monitor, .photo').forEach((el) => io.observe(el));
-
-function elCenter(el, boardRect) {
-  const r = el.getBoundingClientRect();
-  return {
-    x: r.left + r.width / 2 - boardRect.left,
-    y: r.top - boardRect.top + 8,
-  };
-}
-
-function drawThreads() {
-  if (window.innerWidth <= 700) return;
-  const board = document.getElementById('board');
-  const svg = document.getElementById('threads');
-  const boardRect = board.getBoundingClientRect();
-
-  svg.setAttribute('width', board.scrollWidth);
-  svg.setAttribute('height', board.scrollHeight);
-  svg.innerHTML = '';
-
-  function addPath(a, b, isTrunk) {
-    const midX = (a.x + b.x) / 2;
-    const sway = 30 * (a.y > b.y ? -1 : 1);
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', `M ${a.x} ${a.y} Q ${midX} ${(a.y + b.y) / 2 + sway} ${b.x} ${b.y}`);
-    if (isTrunk) path.classList.add('thread--trunk');
-    svg.appendChild(path);
-  }
-
-  const hub = document.getElementById('hub');
-  const hubRect = hub ? hub.getBoundingClientRect() : null;
-  const hubCenter = hubRect
-    ? { x: hubRect.left + hubRect.width / 2 - boardRect.left, y: hubRect.top + hubRect.height / 2 - boardRect.top }
-    : null;
-
-  document.querySelectorAll('.note[data-primary="true"]').forEach((note) => {
-    if (hubCenter) addPath(hubCenter, elCenter(note, boardRect), true);
-    const monitor = note.closest('.unit')?.querySelector('.monitor');
-    if (monitor) addPath(elCenter(note, boardRect), elCenter(monitor, boardRect), false);
-  });
-}
-
-window.addEventListener('load', () => {
-  drawThreads();
-  setTimeout(drawThreads, 400);
-  setTimeout(drawThreads, 1200);
-});
-window.addEventListener('resize', drawThreads);
+}, { threshold: 0.1 });
+document.querySelectorAll('.piece').forEach((el) => io.observe(el));
 </script>
 
 </body>
