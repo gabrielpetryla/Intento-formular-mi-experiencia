@@ -127,6 +127,11 @@
   .side-col .piece:nth-child(odd){ --rot:-3deg; }
   .side-col .piece:nth-child(even){ --rot:3deg; }
 
+  /* Vídeos nunca giram: um <iframe> dentro de um elemento com transform:rotate()
+     fica com o clique quebrado no Safari/iOS, mesmo aparecendo normal visualmente. */
+  .piece--flat{ --rot:0deg !important; }
+  .piece--flat.in-view{ transform:none !important; }
+
   /* ---------- Notas de texto ---------- */
   .note{
     position:relative;
@@ -320,7 +325,7 @@
 
   <div class="side-col side-col--left">
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -331,7 +336,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -349,7 +354,7 @@
       </figure>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -360,7 +365,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -431,7 +436,7 @@
       </figure>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -442,7 +447,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -453,7 +458,7 @@
       </div>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
@@ -471,7 +476,7 @@
       </figure>
     </div>
 
-    <div class="piece">
+    <div class="piece piece--flat">
       <div class="monitor">
         <div class="monitor__bezel">
           <div class="monitor__screen">
