@@ -75,9 +75,10 @@
     margin-bottom:1rem;
   }
   .hub{
-    width:150px;
-    height:150px;
-    border-radius:50%;
+    width: min(420px, 82vw);
+    min-height:180px;
+    padding: 1.6rem 2rem;
+    border-radius: 50% / 38%;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -86,14 +87,14 @@
     border: 2px solid var(--red);
     box-shadow:
       0 0 0 6px rgba(179,58,44,0.15),
-      0 10px 24px rgba(0,0,0,0.6);
+      0 14px 30px rgba(0,0,0,0.6);
   }
   .hub__label{
     font-family:'Fraunces', Georgia, serif;
     font-style:italic;
     font-weight:500;
-    font-size:1rem;
-    line-height:1.25;
+    font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+    line-height:1.35;
     color: var(--paper);
   }
 
@@ -270,31 +271,15 @@
     box-shadow:0 0 5px var(--red);
   }
 
-  /* ---------- Seção de anexos: fotos + músicas extras, grid limpo ---------- */
-  .anexos{
-    position:relative;
-    z-index:2;
-    padding-top: 2rem;
-    border-top: 1px dashed rgba(239,230,208,0.25);
+  .unit .photo{
+    flex: 0 1 160px;
+    max-width:170px;
+    align-self:flex-start;
   }
-  .anexos__title{
-    font-family:'Special Elite','Courier New',monospace;
-    font-size:0.62rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color: var(--red);
-    opacity:0.85;
-    margin-bottom:2rem;
-    text-align:center;
+  .monitor--mini{
+    flex: 1 1 200px;
+    max-width:220px;
   }
-  .anexos__grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 2.2rem 1.6rem;
-    align-items:start;
-  }
-
-  .photo{
     position:relative;
     background:#fffdf8;
     padding: 8px 8px 26px;
@@ -324,11 +309,6 @@
     color: var(--ink);
     text-align:center;
     margin-top:0.5rem;
-  }
-
-  .anexos__grid .monitor{
-    max-width:none;
-    flex:none;
   }
 
   footer{
@@ -366,7 +346,7 @@
 
 <div class="hub-row">
   <div class="hub" id="hub">
-    <span class="hub__label">intento<br>formular</span>
+    <span class="hub__label">Intento formular mi experiencia de enseñar tan temprano</span>
   </div>
 </div>
 
@@ -385,6 +365,18 @@
           <iframe src="https://www.youtube-nocookie.com/embed/cyr7SdyHxYE" title="Volver A Los 17" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
         </div>
         <div class="monitor__label"><span class="dot"></span> reg. 01 — volver a los 17</div>
+      </div>
+    </div>
+    <figure class="photo" id="photo-3" style="--rot:5deg">
+      <div class="photo__frame"><img src="fotos/pantera-cor-de-rosa.jpeg" alt="Dibujo de la Pantera Rosa hecho por un alumno" loading="lazy"></div>
+      <figcaption>lo que dibujan de mí</figcaption>
+    </figure>
+    <div class="monitor monitor--mini" id="monitor-6" style="--rot:-4deg">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/j3MLNFPGEpw" title="Yáyá Massemba" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 06 — yáyá massemba</div>
       </div>
     </div>
   </div>
@@ -406,6 +398,18 @@
         <div class="monitor__label"><span class="dot"></span> reg. 02 — eleggua</div>
       </div>
     </div>
+    <figure class="photo" id="photo-4" style="--rot:-4deg">
+      <div class="photo__frame"><img src="fotos/turma.jpeg" alt="Foto de grupo con alumnos" loading="lazy"></div>
+      <figcaption>los que aprendieron conmigo</figcaption>
+    </figure>
+    <div class="monitor monitor--mini" id="monitor-7" style="--rot:4deg">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/3pWuLoWEfvI" title="Dinossauros (acústico)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 07 — dinossauros</div>
+      </div>
+    </div>
   </div>
 
   <div class="unit" id="unit-3">
@@ -420,6 +424,18 @@
           <iframe src="https://www.youtube-nocookie.com/embed/Y2SwrG5qHEE" title="Lobo-hombre en París" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
         </div>
         <div class="monitor__label"><span class="dot"></span> reg. 03 — lobo-hombre</div>
+      </div>
+    </div>
+    <figure class="photo" id="photo-2" style="--rot:4deg">
+      <div class="photo__frame"><img src="fotos/mural-humildade.jpeg" alt="Mural: un buen lugar se construye con humildad" loading="lazy"></div>
+      <figcaption>un buen lugar se construye con humildad</figcaption>
+    </figure>
+    <div class="monitor monitor--mini" id="monitor-8" style="--rot:-4deg">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/SBHCY81_4jQ" title="Sonhos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 08 — sonhos</div>
       </div>
     </div>
   </div>
@@ -438,6 +454,18 @@
         <div class="monitor__label"><span class="dot"></span> reg. 04 — mundi</div>
       </div>
     </div>
+    <figure class="photo" id="photo-1" style="--rot:-4deg">
+      <div class="photo__frame"><img src="fotos/angico.jpeg" alt="Un árbol de angico" loading="lazy"></div>
+      <figcaption>el angico, de verdad</figcaption>
+    </figure>
+    <div class="monitor monitor--mini" id="monitor-9" style="--rot:4deg">
+      <div class="monitor__bezel">
+        <div class="monitor__screen">
+          <iframe src="https://www.youtube-nocookie.com/embed/US0GbUpQ9VU" title="El Gran Varón" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="monitor__label"><span class="dot"></span> reg. 09 — el gran varón</div>
+      </div>
+    </div>
   </div>
 
   <div class="unit" id="unit-5">
@@ -454,80 +482,16 @@
         <div class="monitor__label"><span class="dot"></span> reg. 05 — todo pasa</div>
       </div>
     </div>
+    <figure class="photo" id="photo-5" style="--rot:5deg">
+      <div class="photo__frame"><img src="fotos/nadar.jpeg" alt="Ilustración: aprendiste a nadar" loading="lazy"></div>
+      <figcaption>pra quem não sabia contar gota</figcaption>
+    </figure>
   </div>
 
-  <section class="anexos">
-    <p class="anexos__title">— anexos: fotos y más canciones —</p>
-    <div class="anexos__grid">
-
-      <figure class="photo" id="photo-3" style="--rot:-3deg">
-        <div class="photo__frame"><img src="fotos/pantera-cor-de-rosa.jpeg" alt="Dibujo de la Pantera Rosa hecho por un alumno" loading="lazy"></div>
-        <figcaption>lo que dibujan de mí</figcaption>
-      </figure>
-
-      <figure class="photo" id="photo-4" style="--rot:2deg">
-        <div class="photo__frame"><img src="fotos/turma.jpeg" alt="Foto de grupo con alumnos" loading="lazy"></div>
-        <figcaption>los que aprendieron conmigo</figcaption>
-      </figure>
-
-      <figure class="photo" id="photo-1" style="--rot:-2deg">
-        <div class="photo__frame"><img src="fotos/angico.jpeg" alt="Un árbol de angico" loading="lazy"></div>
-        <figcaption>el angico, de verdad</figcaption>
-      </figure>
-
-      <figure class="photo" id="photo-2" style="--rot:3deg">
-        <div class="photo__frame"><img src="fotos/mural-humildade.jpeg" alt="Mural: un buen lugar se construye con humildad" loading="lazy"></div>
-        <figcaption>un buen lugar se construye con humildad</figcaption>
-      </figure>
-
-      <div class="monitor" id="monitor-6" style="--rot:-2deg">
-        <div class="monitor__bezel">
-          <div class="monitor__screen">
-            <iframe src="https://www.youtube-nocookie.com/embed/j3MLNFPGEpw" title="Yáyá Massemba" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-          </div>
-          <div class="monitor__label"><span class="dot"></span> reg. 06 — yáyá massemba</div>
-        </div>
-      </div>
-
-      <div class="monitor" id="monitor-7" style="--rot:2deg">
-        <div class="monitor__bezel">
-          <div class="monitor__screen">
-            <iframe src="https://www.youtube-nocookie.com/embed/3pWuLoWEfvI" title="Dinossauros (acústico)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-          </div>
-          <div class="monitor__label"><span class="dot"></span> reg. 07 — dinossauros</div>
-        </div>
-      </div>
-
-      <div class="monitor" id="monitor-8" style="--rot:-2deg">
-        <div class="monitor__bezel">
-          <div class="monitor__screen">
-            <iframe src="https://www.youtube-nocookie.com/embed/SBHCY81_4jQ" title="Sonhos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-          </div>
-          <div class="monitor__label"><span class="dot"></span> reg. 08 — sonhos</div>
-        </div>
-      </div>
-
-      <div class="monitor" id="monitor-9" style="--rot:2deg">
-        <div class="monitor__bezel">
-          <div class="monitor__screen">
-            <iframe src="https://www.youtube-nocookie.com/embed/US0GbUpQ9VU" title="El Gran Varón" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe>
-          </div>
-          <div class="monitor__label"><span class="dot"></span> reg. 09 — el gran varón</div>
-        </div>
-      </div>
-
-      <figure class="photo" id="photo-5" style="--rot:-2deg">
-        <div class="photo__frame"><img src="fotos/nadar.jpeg" alt="Ilustración: aprendiste a nadar" loading="lazy"></div>
-        <figcaption>pra quem não sabia contar gota</figcaption>
-      </figure>
-
-      <figure class="photo" id="photo-6" style="--rot:2deg">
-        <div class="photo__frame"><img src="fotos/agradecimento.jpeg" alt="Alumno sosteniendo un cartel de agradecimiento" loading="lazy"></div>
-        <figcaption>lo que quedó, al final</figcaption>
-      </figure>
-
-    </div>
-  </section>
+  <figure class="photo" id="photo-6" style="max-width:200px; margin:0 auto; --rot:-3deg">
+    <div class="photo__frame"><img src="fotos/agradecimento.jpeg" alt="Alumno sosteniendo un cartel de agradecimiento" loading="lazy"></div>
+    <figcaption>lo que quedó, al final</figcaption>
+  </figure>
 
   <section class="note" id="note-final" style="max-width:420px; margin:0 auto; --rot:-1deg;">
     <span class="note__tag">silencio</span>
